@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<script>
+window.onload = function () {
+
+const signal = getSignal()
+const mean = getMean(signal)
+const variance = getVariance(signal, mean)
+document.getElementById("mean").innerHTML = mean;
+document.getElementById("variance").innerHTML = variance;
+
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light1",
+	
+	data: [{        
+		type: "line",
+      	indexLabelFontSize: 16,
+		dataPoints: signal
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 600px; width: 80%;"></div>
+<h1>Математичне сподівання = <span id="mean"></span></h1>
+<h1>Дисперсія =  <span id="variance"></span></h1>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="signalGenerator.js"></script>
+</body>
+</html>
