@@ -1,6 +1,6 @@
 const n = 6
 const w = 2100
-const N = 1024
+const N = 100009
 
 const getSignal = () => { 
     const x = []
@@ -40,7 +40,12 @@ const getVariance = (arrOfValues, mean) => {
 const getCorrelation = (x, y = null) => {
     if(y === null) {
         y = x
-    } 
+        console.log("AutocorrelationTime:")
+    } else {
+        console.log("CorrelationTime:")
+    }
+
+    let startTime = Date.now()
     let meanX = getMean(x)
     let meanY = getMean(y)
 
@@ -53,14 +58,17 @@ const getCorrelation = (x, y = null) => {
         //console.log(sum)
         result.push({y: sum/(N - 1)})
     }
-    
+    let endTime = Date.now()
+    console.log(endTime - startTime)
     return result
 
 }
 
 const signal  = getSignal()
-const mean = getMean(signal)
-const variance = getVariance(signal, mean)
+const signal2 = getSignal()
+//const mean = getMean(signal)
+//const variance = getVariance(signal, mean)
 
-console.log(variance)
-console.log(getCorrelation(signal))
+
+getCorrelation(signal)
+getCorrelation(signal,signal2)
