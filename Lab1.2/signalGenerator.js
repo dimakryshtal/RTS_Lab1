@@ -1,6 +1,6 @@
 const n = 6
 const w = 2100
-const N = 100009
+const N = 131072
 
 const getSignal = () => { 
     const x = []
@@ -64,11 +64,3 @@ const getCorrelation = (x, y = null) => {
 
 }
 
-const signal  = getSignal()
-const signal2 = getSignal()
-//const mean = getMean(signal)
-//const variance = getVariance(signal, mean)
-
-
-getCorrelation(signal)
-getCorrelation(signal,signal2)
